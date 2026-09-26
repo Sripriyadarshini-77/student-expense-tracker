@@ -1,0 +1,855 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f5f7fa;
+    padding: 30px;
+    color: #222;
+}
+
+
+.container {
+    max-width: 850px;
+    margin: auto;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.total-box {
+    background: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.total-box h2 {
+    font-size: 32px;
+    margin-top: 10px;
+}
+
+.form-box {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+input,
+select,
+button {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+button {
+    background: #222;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #444;
+}
+
+#expenseList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.expense {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.delete-btn {
+    background: #d9534f;
+    border: none;
+    padding: 8px 12px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.filter-box {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.filter-box input,
+.filter-box select {
+    flex: 1;
+}
+
+@media (max-width: 600px) {
+
+    .filter-box {
+        flex-direction: column;
+    }
+
+    .expense {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+}
+.summary-box {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.summary-card {
+    background: white;
+    padding: 18px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.summary-card p {
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.summary-card h3 {
+    font-size: 22px;
+}
+
+@media (max-width: 600px) {
+
+    .summary-box {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+.chart-box {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+.chart-box h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#expenseChart {
+    max-height: 350px;
+}
+.bar-chart {
+    margin-top: 20px;
+}
+
+.bar-item {
+    margin-bottom: 18px;
+}
+
+.bar-label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+}
+
+.bar-background {
+    width: 100%;
+    height: 14px;
+    background: #eeeeee;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    background: #222222;
+    border-radius: 10px;
+    transition: width 0.5s ease;
+}
+.budget-box {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+.budget-box h2 {
+    margin-bottom: 15px;
+}
+
+.budget-box input {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.budget-box button {
+    width: 100%;
+}
+
+.budget-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.budget-info div {
+    background: #f4f6f8;
+    padding: 15px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+#budgetMessage {
+    text-align: center;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+@media (max-width: 600px) {
+
+    .budget-info {
+        grid-template-columns: 1fr;
+    }
+}
+.money-summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.money-card {
+    background: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.money-card h3 {
+    font-size: 24px;
+    margin-top: 8px;
+}
+
+.income-box {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+.income-box h2 {
+    margin-bottom: 15px;
+}
+
+.income-box input {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.income-box button {
+    width: 100%;
+}
+
+@media (max-width: 600px) {
+
+    .money-summary {
+        grid-template-columns: 1fr;
+    }
+}
+.reset-box {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.reset-btn {
+    background: #d9534f;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.reset-btn:hover {
+    background: #c9302c;
+}
+/* ============================= */
+/* MOBILE RESPONSIVE DESIGN */
+/* ============================= */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 15px;
+    }
+
+    .container {
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .total-box {
+        padding: 18px;
+    }
+
+    .total-box h2 {
+        font-size: 28px;
+    }
+
+    .form-box {
+        padding: 15px;
+    }
+
+    input,
+    select,
+    button {
+        width: 100%;
+        font-size: 15px;
+    }
+
+    /* Search & Filter */
+    .filter-box {
+        flex-direction: column;
+        padding: 12px;
+    }
+
+    /* Category Summary */
+    .summary-box {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+
+    .summary-card {
+        padding: 14px 8px;
+    }
+
+    .summary-card h3 {
+        font-size: 18px;
+    }
+
+    /* Income & Balance */
+    .money-summary {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .money-card {
+        padding: 16px;
+    }
+
+    .money-card h3 {
+        font-size: 22px;
+    }
+
+    /* Budget */
+    .budget-info {
+        grid-template-columns: 1fr;
+    }
+
+    /* Expense History */
+    .expense {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .expense > div:last-child {
+        width: 100%;
+        display: flex;
+        gap: 8px;
+    }
+
+    .expense > div:last-child button {
+        flex: 1;
+    }
+
+    /* Chart */
+    .chart-box {
+        padding: 15px;
+    }
+
+    .bar-label {
+        font-size: 14px;
+    }
+
+    /* Clear button */
+    .reset-btn {
+        width: 100%;
+    }
+}
+/* Professional Card Design */
+
+.total-box,
+.form-box,
+.filter-box,
+.summary-card,
+.chart-box,
+.budget-box,
+.money-card,
+.income-box,
+.expense {
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.total-box,
+.form-box,
+.filter-box,
+.chart-box,
+.budget-box,
+.income-box {
+    margin-bottom: 20px;
+}
+button {
+    transition: 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-1px);
+}
+/* ========================= */
+/* DASHBOARD HEADER */
+/* ========================= */
+
+.dashboard-header {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.dashboard-header h1 {
+    text-align: left;
+    margin-bottom: 6px;
+}
+
+.dashboard-header p {
+    color: #666;
+    font-size: 15px;
+}
+
+
+/* ========================= */
+/* QUICK STATISTICS */
+/* ========================= */
+
+.quick-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.quick-card {
+    background: white;
+    padding: 18px;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.quick-card > span {
+    font-size: 25px;
+}
+
+.quick-card p {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.quick-card h3 {
+    font-size: 20px;
+}
+
+
+/* ========================= */
+/* MOBILE */
+/* ========================= */
+
+@media (max-width: 600px) {
+
+    .dashboard-header {
+        padding: 20px;
+    }
+
+    .dashboard-header h1 {
+        font-size: 24px;
+    }
+
+    .quick-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .quick-card {
+        padding: 14px;
+    }
+
+    .quick-card h3 {
+        font-size: 17px;
+    }
+
+    .quick-card > span {
+        font-size: 21px;
+    }
+}
+/* ========================= */
+/* EXPENSE HISTORY */
+/* ========================= */
+
+.expense {
+    background: white;
+    padding: 18px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.expense-details {
+    flex: 1;
+}
+
+.expense-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.expense-title strong {
+    font-size: 16px;
+}
+
+.category-badge {
+    background: #f0f0f0;
+    color: #333;
+    padding: 4px 9px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.expense-date {
+    color: #777;
+    font-size: 13px;
+}
+
+.expense-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.expense-amount {
+    font-size: 18px;
+    margin-right: 5px;
+}
+
+.edit-btn {
+    background: #333;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+
+.delete-btn {
+    background: #d9534f;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+
+.edit-btn:hover,
+.delete-btn:hover {
+    transform: translateY(-1px);
+}
+/* ========================= */
+/* SMOOTH ANIMATIONS */
+/* ========================= */
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Page entrance */
+.container {
+    animation: pageEnter 0.7s ease;
+}
+
+@keyframes pageEnter {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Cards hover */
+.total-box,
+.summary-card,
+.quick-card,
+.money-card,
+.budget-box,
+.income-box,
+.chart-box,
+.expense {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.total-box:hover,
+.summary-card:hover,
+.quick-card:hover,
+.money-card:hover,
+.budget-box:hover,
+.income-box:hover,
+.chart-box:hover,
+.expense:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Buttons */
+button {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+/* Inputs */
+input,
+select {
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #555;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
+}
+
+/* Expense card entrance */
+.expense {
+    animation: expenseAppear 0.4s ease;
+}
+
+@keyframes expenseAppear {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Chart animation */
+.bar-fill {
+    animation: barGrow 0.8s ease;
+}
+
+@keyframes barGrow {
+    from {
+        width: 0;
+    }
+}
+
+/* Badge */
+.category-badge {
+    transition: transform 0.2s ease;
+}
+
+.category-badge:hover {
+    transform: scale(1.05);
+}
+.export-box {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 12px;
+}
+
+.export-btn {
+    background: #222;
+    color: white;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.export-btn:hover {
+    background: #444;
+}
+
+@media (max-width: 600px) {
+
+    .export-box {
+        justify-content: stretch;
+    }
+
+    .export-btn {
+        width: 100%;
+    }
+
+}
+/* ========================= */
+/* EMPTY STATE */
+/* ========================= */
+
+.empty-state {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 40px 20px;
+    text-align: center;
+    color: #666;
+    animation: expenseAppear 0.4s ease;
+}
+
+.empty-state div {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.empty-state h3 {
+    color: #222;
+    margin-bottom: 6px;
+}
+
+.empty-state p {
+    font-size: 14px;
+}
+/* ========================= */
+/* FINAL UI POLISH */
+/* ========================= */
+
+h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.dashboard-header {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.dashboard-header:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
+}
+.quick-card {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.quick-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
+}
+
+.quick-card > span {
+    transition: transform 0.25s ease;
+}
+
+.quick-card:hover > span {
+    transform: scale(1.15);
+}
+.expense {
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.expense:hover {
+    transform: translateX(3px);
+    border-color: #d5d5d5;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.07);
+}
+.category-badge {
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.category-badge:hover {
+    transform: scale(1.08);
+}
+.bar-fill {
+    animation: chartGrow 0.9s ease-out;
+}
+
+@keyframes chartGrow {
+    from {
+        width: 0;
+    }
+}
+.export-btn {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.export-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.12);
+}
+/* Custom Scrollbar */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f5f5f5;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c8c8c8;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #999;
+}
